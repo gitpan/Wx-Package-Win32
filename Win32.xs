@@ -5,7 +5,7 @@
 #include "ModList/ModList.h"
 
 #undef XS_VERSION
-#define XS_VERSION "0.01"
+#define XS_VERSION "0.02"
 
 static int
 not_here(char *s)

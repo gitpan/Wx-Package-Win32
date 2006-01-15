@@ -14,7 +14,7 @@ our @ISA = qw(Exporter DynaLoader);
 use vars qw($WINDLLS @LOADEDWINDLLS $DLLPATTERN $PDKCOMPILE);
 
 our @EXPORT = qw();
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 bootstrap Wx::Package::Win32 $VERSION;
 
@@ -29,7 +29,7 @@ Wx::Package::Win32
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
@@ -44,6 +44,7 @@ Version 0.01
 =head1 DESCRIPTION
 
     A module to assist packaging Wx based applications with PAR and ActiveState PerlApp / PDK.
+    All that is needed is that you include a 'use' statement as the first item in your BEGIN blocks.
     
 
 =cut
