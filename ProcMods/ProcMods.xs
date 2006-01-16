@@ -5,7 +5,7 @@
 #include "ModList/ModList.h"
 
 #undef XS_VERSION
-#define XS_VERSION "0.02"
+#define XS_VERSION "0.03"
 
 static int
 not_here(char *s)
@@ -73,8 +73,7 @@ not_there:
 
 
 
-MODULE = Wx::Package::Win32		PACKAGE = Wx::Package::Win32	
-
+MODULE=Wx__Package__Win32__ProcMods PACKAGE=Wx::Package::Win32::ProcMods	
 
 double
 constant(sv,arg)

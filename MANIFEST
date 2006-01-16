@@ -4,9 +4,11 @@ META.yml # Will be created by "make dist"
 Makefile.PL
 README
 lib/Wx/Package/Win32.pm
-Win32.xs
-ModList/ModList.h
-ModList/ModList.c
-ModList/Makefile.PL
+lib/Wx/Package/Win32/ProcMods.pm
+ProcMods/ProcMods.xs
+ProcMods/Makefile.PL
+ProcMods/ModList/ModList.h
+ProcMods/ModList/ModList.c
+ProcMods/ModList/Makefile.PL
 t/00-load.t
 

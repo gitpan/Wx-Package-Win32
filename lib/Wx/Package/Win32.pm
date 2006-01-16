@@ -5,18 +5,17 @@ use warnings;
 use strict;
 use Carp;
 use Wx 0.27;
+use Wx::Package::Win32::ProcMods;
 
 require Exporter;
-require DynaLoader;
 
-our @ISA = qw(Exporter DynaLoader);
+our @ISA = qw(Exporter);
 
 use vars qw($WINDLLS @LOADEDWINDLLS $DLLPATTERN $PDKCOMPILE);
 
 our @EXPORT = qw();
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
-bootstrap Wx::Package::Win32 $VERSION;
 
 $WINDLLS = {};
         
@@ -29,13 +28,21 @@ Wx::Package::Win32
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
 =head1 SYNOPSIS
 
+    For PerlApp and PAR
+
     BEGIN { use Wx::Package::Win32; }
+
+    
+    For Perl2Exe
+    
+    BEGIN { use Wx::Package::Win32; }
+    use Wx::Package::Win32;
 
     ...
 
@@ -43,8 +50,9 @@ Version 0.02
 
 =head1 DESCRIPTION
 
-    A module to assist packaging Wx based applications with PAR and ActiveState PerlApp / PDK.
+    A module to assist packaging Wx based applications with PAR, ActiveState PerlApp / PDK and Perl2Exe.
     All that is needed is that you include a 'use' statement as the first item in your BEGIN blocks.
+    For Perl2Exe, an additional 'use' statement outside any BEGIN block ensures correct object cleanup. 
     
 
 =cut
@@ -86,7 +94,7 @@ sub __get_module_path {
     
     # get dll naming pattern if first call
     if(!defined($DLLPATTERN)) {
-        my @modules = GetProcessModules(0); # get modules for current process
+        my @modules = Wx::Package::Win32::ProcMods::GetProcessModules(0); # get modules for current process
         foreach my $module (@modules) {
             my $mname = $module->[7];
             
