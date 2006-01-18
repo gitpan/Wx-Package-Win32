@@ -1,6 +1,6 @@
 Wx-Package-Win32
 
-Version 0.01.
+Version 0.04.
 
 Package to ease wxPerl application packaging with PAR and 
 PerlApp/PDK on MSWin32.

@@ -1,17 +1,18 @@
 package Wx::Package::Win32::ProcMods;
 
 use 5.008;
-use warnings;
 use strict;
-use Carp;
 
 require Exporter;
 require DynaLoader;
 
 our @ISA = qw(Exporter DynaLoader);
 
+use vars qw($VERSION);
+
+$VERSION = 0.04;
+
 our @EXPORT = qw();
-our $VERSION = '0.03';
 
 bootstrap Wx::Package::Win32::ProcMods $VERSION;
 
@@ -22,7 +23,7 @@ Wx::Package::Win32::ProcMods
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
@@ -34,9 +35,7 @@ Version 0.03
 
 =head1 DESCRIPTION
 
-    A module to assist packaging Wx based applications with PAR, ActiveState PerlApp / PDK and Perl2Exe.
-    All that is needed is that you include a 'use' statement as the first item in your BEGIN blocks.
-    
+    Module used by Wx::Package::Win32 
 
 =cut
 

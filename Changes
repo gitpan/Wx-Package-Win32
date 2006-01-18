@@ -1,5 +1,8 @@
 Revision history for Wx-Package-Win32
 
+0.04    2006-01-18 00:00
+        Fixed tar permissions for CPAN versioning
+
 0.03    2006-01-15 23:00
         Added Wx::Package::Win32::ProcMods to allow use with Perl2Exe
 

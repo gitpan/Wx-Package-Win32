@@ -1,9 +1,7 @@
 package Wx::Package::Win32;
 
 use 5.008;
-use warnings;
 use strict;
-use Carp;
 use Wx 0.27;
 use Wx::Package::Win32::ProcMods;
 
@@ -11,10 +9,12 @@ require Exporter;
 
 our @ISA = qw(Exporter);
 
-use vars qw($WINDLLS @LOADEDWINDLLS $DLLPATTERN $PDKCOMPILE);
+use vars qw($VERSION $WINDLLS @LOADEDWINDLLS $DLLPATTERN $PDKCOMPILE);
+
+$VERSION = 0.04;
 
 our @EXPORT = qw();
-our $VERSION = '0.03';
+
 
 
 $WINDLLS = {};
@@ -28,7 +28,7 @@ Wx::Package::Win32
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
@@ -50,9 +50,11 @@ Version 0.03
 
 =head1 DESCRIPTION
 
-    A module to assist packaging Wx based applications with PAR, ActiveState PerlApp / PDK and Perl2Exe.
-    All that is needed is that you include a 'use' statement as the first item in your BEGIN blocks.
-    For Perl2Exe, an additional 'use' statement outside any BEGIN block ensures correct object cleanup. 
+    A module to assist packaging Wx based applications with PAR, 
+    ActiveState PerlApp / PDK and Perl2Exe. All that is needed is 
+    that you include a 'use' statement as the first item in your 
+    BEGIN blocks. For Perl2Exe, an additional 'use' statement 
+    outside any BEGIN block ensures correct object cleanup. 
     
 
 =cut
