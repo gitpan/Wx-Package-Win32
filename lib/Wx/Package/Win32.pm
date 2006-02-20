@@ -2,23 +2,17 @@ package Wx::Package::Win32;
 
 use 5.008;
 use strict;
-use Wx 0.27;
+use Wx 0.28;
 use Wx::Package::Win32::ProcMods;
 
 require Exporter;
 
 our @ISA = qw(Exporter);
 
-use vars qw($VERSION $WINDLLS @LOADEDWINDLLS $DLLPATTERN $PDKCOMPILE);
-
-$VERSION = 0.04;
-
+use vars qw($VERSION $WINDLLS @LOADEDWINDLLS $DLLPATTERN $RUNTIME);
+$VERSION = 0.05;
 our @EXPORT = qw();
-
-
-
 $WINDLLS = {};
-        
 @LOADEDWINDLLS = ();
 
 
@@ -28,7 +22,7 @@ Wx::Package::Win32
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
@@ -45,6 +39,13 @@ Version 0.04
     use Wx::Package::Win32;
 
     ...
+    
+    
+    my $environment = Wx::Package::Win32::runtime();
+    
+    returns PDKCHECK|PERLAPP|PARLAPP|PERL2EXE|PERL
+    
+    
 
 =cut
 
@@ -60,9 +61,10 @@ Version 0.04
 =cut
 
 if($PerlApp::VERSION) {
+    # PerlApp::VERSION is definitive for PerlApp
     my $execname = PerlApp::exe();
     if($execname =~ /.*pdkcheck\.exe$/) { 
-        $PDKCOMPILE = 1;
+        $RUNTIME = 'PDKCHECK';
         foreach ( @INC ) {
             if( -f "$_/auto/Wx/Wx.dll" ) {
                 my $pdkcompilepath = "$_/auto/Wx";
@@ -70,11 +72,21 @@ if($PerlApp::VERSION) {
                 $ENV{PATH} = $pdkcompilepath . ';' . $ENV{PATH};
             }
         }
+    } else {
+        $RUNTIME = 'PERLAPP';
     }
-}    
+} elsif($0 =~ /.+\.exe$/) {
+    # in PARL packed executables $0 contains the exec name
+    $RUNTIME = 'PARLEXE';
+} elsif($^X !~ /(perl)|(perl\.exe)$/i) {
+    # in other executables - packed or otherwise - $^X contains the exec name - not 'perl'
+    $RUNTIME = 'PERL2EXE';
+} else {
+    $RUNTIME = 'PERL';
+}
                      
 Wx::set_load_function( sub { my $dllkey = shift;
-                return if $PDKCOMPILE;
+                return if $RUNTIME eq 'PDKCHECK';
                 # don't load twice
                 return if(exists( $WINDLLS->{$dllkey}));
                 my $dllfile = Wx::Package::Win32::__get_module_path($dllkey);              
@@ -84,12 +96,17 @@ Wx::set_load_function( sub { my $dllkey = shift;
                 push(@LOADEDWINDLLS, $dllfile);
                 1; } );
         
-Wx::set_end_function( sub { 
+Wx::set_end_function( sub {
+                return if $RUNTIME eq 'PDKCHECK';
                 while( my $module = pop @LOADEDWINDLLS) {
                     Wx::_unload_plugin( $module );
                 }
                             
                 1; } );
+
+sub runtime {
+    return $RUNTIME;
+}
 
 sub __get_module_path {
     my $dllkey = shift;

@@ -5,9 +5,9 @@
 #include "ModList/ModList.h"
 
 #undef XS_VERSION
-#define XS_VERSION "0.04"
+#define XS_VERSION "0.05"
 
-MODULE=Wx__Package__Win32__ProcMods PACKAGE=Wx::Package::Win32::ProcMods	
+MODULE=Wx::Package::Win32::ProcMods    PACKAGE=Wx::Package::Win32::ProcMods	
 
 void
 GetProcessModules(pid)

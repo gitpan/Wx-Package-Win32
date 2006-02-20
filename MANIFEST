@@ -5,10 +5,12 @@ Makefile.PL
 README
 lib/Wx/Package/Win32.pm
 lib/Wx/Package/Win32/ProcMods.pm
+bin/wxperlpp
 ProcMods/ProcMods.xs
 ProcMods/Makefile.PL
 ProcMods/ModList/ModList.h
 ProcMods/ModList/ModList.c
 ProcMods/ModList/Makefile.PL
+ProcMods/ModList/test.pl
 t/00-load.t
 
