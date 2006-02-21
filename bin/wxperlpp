@@ -76,6 +76,9 @@ sub help {
 
 sub version {
     print << ".";
+
+Amended Perl Packager - to assist in Wx packaging.
+
 Perl Packager, version $VERSION (PAR version $PAR::VERSION)
 Copyright 2002, 2003, 2004, 2005 by Autrijus Tang <autrijus\@autrijus.org>
 
@@ -105,7 +108,7 @@ __END__
 
 =head1 NAME
 
-pp - Perl Packager
+wxperlpp - Amended Perl Packager for Wx
 
 =head1 SYNOPSIS
 

@@ -10,7 +10,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 
 use vars qw($VERSION $WINDLLS @LOADEDWINDLLS $DLLPATTERN $RUNTIME);
-$VERSION = 0.05;
+$VERSION = 0.06;
 our @EXPORT = qw();
 $WINDLLS = {};
 @LOADEDWINDLLS = ();
@@ -22,7 +22,7 @@ Wx::Package::Win32
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 

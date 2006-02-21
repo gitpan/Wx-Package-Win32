@@ -1,5 +1,8 @@
 Revision history for Wx-Package-Win32
 
+0.06    2006-02-20 00:00
+	Fixed tar permissions for CPAN versioning (Again)
+
 0.05    2006-01-22 00:00
         Added PAR packaging front end script
         Added 'runtime' function to Win32.pm to return runtime environment

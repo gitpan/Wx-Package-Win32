@@ -10,7 +10,7 @@ our @ISA = qw(Exporter DynaLoader);
 
 use vars qw($VERSION);
 
-$VERSION = 0.05;
+$VERSION = 0.06;
 
 our @EXPORT = qw();
 
@@ -23,7 +23,7 @@ Wx::Package::Win32::ProcMods
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 
