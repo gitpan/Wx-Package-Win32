@@ -1,6 +1,5 @@
 Changes
 MANIFEST
-META.yml # Will be created by "make dist"
 Makefile.PL
 README
 lib/Wx/Package/Win32.pm
@@ -14,3 +13,4 @@ ProcMods/ModList/Makefile.PL
 ProcMods/ModList/test.pl
 t/00-load.t
 
+META.yml                                 Module meta-data (added by MakeMaker)
