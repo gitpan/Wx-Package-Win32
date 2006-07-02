@@ -10,7 +10,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 
 use vars qw($VERSION $WINDLLS @LOADEDWINDLLS $DLLPATTERN $RUNTIME);
-$VERSION = 0.07;
+$VERSION = 0.08;
 our @EXPORT = qw();
 $WINDLLS = {};
 @LOADEDWINDLLS = ();
@@ -20,9 +20,11 @@ $WINDLLS = {};
 
 Wx::Package::Win32
 
+Note: For Wx versions 0.49 and later - use Wx::Perl::Packager instead.
+
 =head1 VERSION
 
-Version 0.07
+Version 0.08
 
 =cut
 
@@ -40,11 +42,7 @@ Version 0.07
 
     ...
     
-    
-    my $environment = Wx::Package::Win32::runtime();
-    
-    returns PDKCHECK|PERLAPP|PARLAPP|PERL2EXE|PERL
-    
+ 
     
 
 =cut
@@ -66,11 +64,13 @@ if($PerlApp::VERSION) {
     if($execname =~ /.*pdkcheck\.exe$/) { 
         $RUNTIME = 'PDKCHECK';
         foreach ( @INC ) {
+            # following will only work for Wx 0.28. No adverse effect on later versions
             if( -f "$_/auto/Wx/Wx.dll" ) {
                 my $pdkcompilepath = "$_/auto/Wx";
                 $pdkcompilepath =~ s/\//\\/g ;
                 $ENV{PATH} = $pdkcompilepath . ';' . $ENV{PATH};
             }
+            
         }
     } else {
         $RUNTIME = 'PERLAPP';

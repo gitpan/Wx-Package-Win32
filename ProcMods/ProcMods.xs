@@ -5,7 +5,7 @@
 #include "ModList/ModList.h"
 
 #undef XS_VERSION
-#define XS_VERSION "0.07"
+#define XS_VERSION "0.08"
 
 MODULE=Wx::Package::Win32::ProcMods    PACKAGE=Wx::Package::Win32::ProcMods	
 
